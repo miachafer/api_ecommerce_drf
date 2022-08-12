@@ -1,3 +1,4 @@
+from tabnanny import verbose
 from django.db import models
 from localflavor.br.models import BRCPFField
 
@@ -14,7 +15,7 @@ O telefone é validado com uso de uma expressão regular que só permite a cria�
 class Cliente(models.Model):
     nome = models.CharField(
         max_length=255,
-        verbose_name="Nome completo",
+        verbose_name="Nome Completo",
         blank=False)
     cpf = BRCPFField(
         max_length=11,
@@ -34,5 +35,9 @@ class Cliente(models.Model):
 
     def __str__(self):
         return f'Nome: {self.nome} - CPF: {self.cpf}'
+    
+    class Meta:
+        verbose_name = "Cliente"
+        verbose_name_plural = "Clientes"
 
     
